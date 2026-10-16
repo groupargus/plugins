@@ -1,0 +1,12 @@
+{
+  "name": "sunnny",
+  "version": "0.1.0",
+  "description": "Connect Claude to your Sunnny CRM, support, and call data, and get an executive overview of any customer.",
+  "author": {
+    "name": "Sunnny team",
+    "email": "support@sunnny.com"
+  },
+  "homepage": "https://sunnny.com",
+  "license": "UNLICENSED",
+  "keywords": ["sunnny", "crm", "customer-success", "mcp"]
+}

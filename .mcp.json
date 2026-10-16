@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "sunnny": {
+      "type": "http",
+      "url": "https://api.sunnny.com/mcp",
+      "oauth": {
+        "clientId": "mcp-client",
+        "callbackPort": 3334
+      }
+    }
+  }
+}
