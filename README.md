@@ -8,8 +8,8 @@ The plugin is in beta. Sign-in only works for Sunnny accounts enabled for the be
 
 Works in Claude on the web, the Claude desktop app, and Cowork.
 
-1. Open **Customize → Plugins → Add** and add the marketplace `groupargus/plugins`.
-2. Install **sunnny**.
+1. Open **Customize → Plugins**, choose **Add → Add marketplace**, enter `groupargus/plugins`, and choose **Sync**.
+2. On the **Discover** tab, find **Sunnny** and choose **Add**.
 3. Open the plugin's **Connectors** tab, choose **Connect**, and sign in with your Sunnny account. If Claude asks you to finish connecting a connector, choose **Continue connecting**.
 
 ## Use it
