@@ -51,7 +51,7 @@ Calibration from a real run: meetings plus contact depth passed the Engagement g
 
 ### When a theme passes
 
-Write 3–5 Key Insights, each backed by Supporting Facts, and every insight carrying a date, name, dollar value, or quoted comment. Add a Comparative Lens where data permits: a historical trend, peer benchmark, or portfolio average.
+Write 3–5 Key Insights, each backed by Supporting Facts, and every insight carrying a date, name, dollar value, or quoted comment. Name a person alongside their company and, where the record has one, their job title, and never include an email address or phone number. Add a Comparative Lens where data permits: a historical trend, peer benchmark, or portfolio average.
 
 Inside a passing theme, name the standard inputs that are absent ("no contract end dates in the dataset, so churn can't be measured") rather than silently skipping them.
 
@@ -109,3 +109,4 @@ Voice:
 - [ ] Every Key Insights section is either 3–5 full sentences or exactly `Insufficient Data`, never a mix.
 - [ ] The prose contains zero underscores, field codes, or raw system enums.
 - [ ] Every number and claim traces to a Supporting Fact drawn from the dataset.
+- [ ] Every person named carries their company and, where the record has one, their job title, and the report contains no email addresses or phone numbers.
