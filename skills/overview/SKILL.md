@@ -2,21 +2,21 @@
 name: overview
 description: Executive summary of one company and its subsidiaries from the Sunnny database, delivered as a five-theme report. Use when asked for an overview of, or to summarize, brief on, or analyze, a company, customer, or account, including account reviews, QBR prep, customer health checks, or "what do we know about" a company.
 argument-hint: [company name]
-allowed-tools: mcp__plugin_sunnny_sunnny__list_tables mcp__plugin_sunnny_sunnny__query
+allowed-tools: mcp__plugin_sunnny_sunnny__get_summary mcp__plugin_sunnny_sunnny__list_organizations mcp__plugin_sunnny_sunnny__get_organization mcp__plugin_sunnny_sunnny__get_organization_summary mcp__plugin_sunnny_sunnny__list_organization_records mcp__plugin_sunnny_sunnny__list_contact_records
 ---
 
 # Sunnny Overview
 
-Act as a senior business operations analyst delivering a live briefing to the CEO about one company. Your evidence is the Sunnny database: `latest.db`, queried with read-only SQL `SELECT` via the Sunnny MCP connection, holding unified customer data from CRM, support, and communication systems (Salesforce, HubSpot, Zendesk, Jira, Slack, Gong). Your deliverable is a written report, not a spreadsheet.
+Act as a senior business operations analyst delivering a live briefing to the CEO about one company. Your evidence is the Sunnny database, read through the Sunnny MCP tools, holding unified customer data from CRM, support, and communication systems (Salesforce, HubSpot, Zendesk, Jira, Slack, Gong). Your deliverable is a written report, not a spreadsheet.
 
 Every claim traces to a field in the dataset. Where the data is missing, the report says so explicitly (see the theme gates below) instead of filling the gap.
 
 ## Process
 
-1. **Confirm which company.** Search the database for the requested name. One clear match: proceed. Multiple distinct organizations match ("Disney" hitting Walt Disney Co and Disney Streaming as separate families): list the candidates and ask which one before running. Subsidiaries of one family don't count as separate matches — the family step handles those.
-2. **Resolve the family of companies.** Query the organization graph (`root_graph_id`) and expand the analysis to the full corporate family. Skip intermediary holding companies that hold zero contacts and zero activities: if Marriott International has 3 active subsidiaries behind an empty Starwood holding node, analyze the 3 and bypass the node. Done when every subsidiary that has data is in scope.
-3. **Map the data.** Accounts and Contacts are the core entities. Meetings, calls and conversations, deals, and tickets are historical activity belonging to those companies and people, never free-standing facts. Inspect the actual tables and columns before querying rather than guessing names.
-4. **Compute portfolio baselines.** The Comparative Lens needs something to compare against: query across all companies for the portfolio-wide figures each theme uses (average open pipeline and booked revenue per family, meetings per family, ticket open rate). Show the math when you cite one.
+1. **Confirm which company.** Search for the requested name with `list_organizations`, whose `filter` matches any company in a family and returns each matching family whole, top-level company first. Count matches by the families in `organizations`, never by `filtered_count`, which counts companies. One family: proceed. Several families: list their top-level names and ask which one before running. Subsidiaries of one family don't count as separate matches — the family step handles those.
+2. **Resolve the family of companies.** The step 1 result already holds the whole family tree, from the top-level company down; call `get_organization` only when you start from an organization ID. Expand the analysis to the full corporate family. Record lists cover one company only, with no roll-up from subsidiaries, so call `get_organization_summary` for each company in the tree first and let its counts drive the rest. The summary doesn't count custom records, so also call `list_organization_records` with kind `custom-types` for every company in the tree. Skip a company whose contacts, tickets, meetings, and opportunities are all zero and that has no custom record types: if Marriott International has 3 active subsidiaries behind an empty Starwood holding node, analyze the 3 and bypass the node. For the rest, call `list_organization_records` for each kind with a nonzero count, and fetch the records of each custom type listed. Done when every subsidiary that has data is in scope.
+3. **Map the data.** Accounts and Contacts are the core entities. Meetings, calls and conversations, deals, and tickets are historical activity belonging to those companies and people, never free-standing facts. Reach a contact's own meetings, tickets, and deals with `list_contact_records`, passing the contact's `id`; deals list their contacts by source-system ID, so match those against each contact's `source_ids`. Custom record types hold what the standard kinds don't, often contracts and surveys: kind `custom-types` lists them, and passing a type's `id` as `type_id` returns its records, with fields as key and value pairs under `properties`. Read the fields the records actually return rather than guessing names. Money fields (`value`, `annual_revenue`) hold an `amount` in the currency's smallest unit next to its `currency`, so divide by 100 for currencies with cents, such as USD and EUR, and check the currency before converting any other; values inside custom records are already formatted. Ticket status and priority spellings differ by source system, so compare them case-insensitively and count `new` with `open` as unresolved.
+4. **Compute portfolio baselines.** The Comparative Lens needs something to compare against: `get_summary` counts the tickets, meetings, opportunities, and contacts across the whole portfolio (use `merged_count` for contacts). For the number of families, page through `list_organizations` with `has_activity_since` set to an early date such as 2000-01-01 and count the entries in `organizations`. Neither `total_count` nor `filtered_count` works: both count companies, not families. Most families have no activity at all, so dividing by every family shrinks the average about tenfold. Divide the counts by the active families for per-family averages, such as tickets or meetings per family. The tools can't produce portfolio-wide rates or dollar figures, so compare open rates, pipeline, and booked revenue against the family's own history instead, such as this year against last. Show the math when you cite one.
 5. **Gate each theme** against its Minimum Required Inputs (see the theme table), then write it in two voices.
 6. **Write the Short Summary last**, once the themes are done, ending on The Read.
 7. **Run the pre-flight checklist** before delivering. Done when every box passes.
@@ -41,9 +41,9 @@ Exactly these five, in this order. A theme passes its gate when enough of its li
 
 | Theme | Question it answers | Minimum Required Inputs | Insights to consider |
 |---|---|---|---|
-| 1. Customer Overview | Quick overview of this customer | Account profile (industry, segment, employees); company tree (conglomerate or independent); account type or lifecycle stage; plan type or service tier | Recently new customer; prospect subsidiaries inside a large company tree |
-| 2. Customer Value | What is this customer worth to me | ARR/ACV or contract value and end dates; opportunity pipeline with dollar value, stage, close dates; total across parent and subsidiaries | Upcoming contract expirations; deal close dates; deals at risk from support ticket volume |
-| 3. Customer Engagement Level | How strong and strategic is the relationship | Engagement volume (meetings, calls, conversations); NPS/CSAT or surveys; contact count, seniority distribution (C-level through Director), functional diversity | Low or dropping engagement; who shows up in meetings and deals; missing senior contacts; recurring conversation topics |
+| 1. Customer Overview | Quick overview of this customer | Account profile (industry, employees, revenue; segment if a source has it); company tree (conglomerate or independent); account type (customer, prospect, lead); plan or product, usually from a contracts custom record | Recently new customer; prospect subsidiaries inside a large company tree |
+| 2. Customer Value | What is this customer worth to me | Contract value and end dates, usually from a contracts custom record; opportunity pipeline with dollar value, stage, close dates; total across parent and subsidiaries | Upcoming contract expirations; deal close dates; deals at risk from support ticket volume |
+| 3. Customer Engagement Level | How strong and strategic is the relationship | Engagement volume (meetings, calls, conversations); NPS/CSAT or surveys, usually from a survey custom record; contact count, seniority distribution (C-level through Director) from contact and meeting-participant titles, functional diversity from contact departments | Low or dropping engagement; who shows up in meetings and deals; missing senior contacts; recurring conversation topics |
 | 4. Customer Support | How is the support experience | Tickets with priority and status; CSAT/NPS or SLA metrics; community engagement | Volume and trends; recurring ticket themes; high-priority or urgent tickets; bad sentiment |
 | 5. Product Activity | Is the customer getting value | Product telemetry (DAU/WAU/MAU, logins, feature usage) OR a usage proxy (API calls, exports) | Low or declining usage; power users; active users vs. licensed seats; unused features |
 
@@ -51,7 +51,7 @@ Calibration from a real run: meetings plus contact depth passed the Engagement g
 
 ### When a theme passes
 
-Write 3–5 Key Insights, each backed by Supporting Facts, and every insight carrying a date, name, dollar value, or quoted comment. Add a Comparative Lens where data permits: a historical trend, peer benchmark, or portfolio average.
+Write 3–5 Key Insights, each backed by Supporting Facts, and every insight carrying a date, name, dollar value, or quoted comment. Name a person alongside their company and, where the record has one, their job title, and never include an email address or phone number. Add a Comparative Lens where data permits: a historical trend, peer benchmark, or portfolio average.
 
 Inside a passing theme, name the standard inputs that are absent ("no contract end dates in the dataset, so churn can't be measured") rather than silently skipping them.
 
@@ -63,10 +63,10 @@ Set Key Insights to exactly `Insufficient Data`. In Supporting Facts, bullet the
 
 Key Insights are full, natural sentences you would say aloud in a briefing — the strategic read. Supporting Facts are short, data-dense bullets — the evidence trail, with record IDs, source fields, and deep links to records where available.
 
-### Exemplar (Customer Support, from a real report)
+### Exemplar (Customer Support, adapted from a real report)
 
 Key Insights:
-- Support is this family's weak spot: 11 of its 20 tickets are still open, a 55% open rate against 36% across the portfolio.
+- Support is this family's weak spot: 11 of its 20 tickets are still open, and 20 tickets is eight times the portfolio average of 2.5 per family.
 - Tickets are aging badly — 8 of the 11 open ones have been sitting for six months, and the oldest, Sephora asking to add seats to its plan, has been open since June 13, 2025.
 - Two of the stalled tickets are customers trying to give us money: that Sephora add-seats request and Moet's high-priority enterprise-tier upgrade from May 2026.
 
@@ -75,11 +75,11 @@ Supporting Facts:
 - Oldest open ticket: Sephora "Add seats to the Sephora plan" #143, opened 2025-06-13, ~13 months (deep link to the ticket)
 - No CSAT, sentiment, or SLA metrics in the dataset
 
-Comparative Lens: Portfolio-wide open rate is 36% (138 of 383 tickets); this family runs 55%, and its oldest open ticket predates every one of its expansion deals.
+Comparative Lens: Active families average 2.5 tickets (674 tickets across the 267 families with any activity). This family has 20, and its oldest open ticket predates every one of its expansion deals.
 
 Data Sources: Zendesk Tickets
 
-Note the split: "11 of 20 tickets open, 55% vs 36%" appears as analysis in the insight and as the raw count in the facts — the insight says what it means, the fact makes it checkable.
+Note the split: "11 of 20 tickets open, eight times the portfolio average" appears as analysis in the insight and as the raw count in the facts — the insight says what it means, the fact makes it checkable.
 
 ## Conflicting and duplicated data
 
@@ -109,3 +109,4 @@ Voice:
 - [ ] Every Key Insights section is either 3–5 full sentences or exactly `Insufficient Data`, never a mix.
 - [ ] The prose contains zero underscores, field codes, or raw system enums.
 - [ ] Every number and claim traces to a Supporting Fact drawn from the dataset.
+- [ ] Every person named carries their company and, where the record has one, their job title, and the report contains no email addresses or phone numbers.
