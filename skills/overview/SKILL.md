@@ -63,16 +63,18 @@ Set Key Insights to exactly `Insufficient Data`. In Supporting Facts, bullet the
 
 Key Insights are full, natural sentences you would say aloud in a briefing — the strategic read. Supporting Facts are short, data-dense bullets — the evidence trail, with record IDs, source fields, and deep links to records where available.
 
-### Exemplar (Customer Support, adapted from a real report)
+### Exemplar (Customer Support, made-up family)
+
+The companies and numbers below are invented to show the shape. Never reuse them in a report.
 
 Key Insights:
 - Support is this family's weak spot: 11 of its 20 tickets are still open, and 20 tickets is eight times the portfolio average of 2.5 per family.
-- Tickets are aging badly — 8 of the 11 open ones have been sitting for six months, and the oldest, Sephora asking to add seats to its plan, has been open since June 13, 2025.
-- Two of the stalled tickets are customers trying to give us money: that Sephora add-seats request and Moet's high-priority enterprise-tier upgrade from May 2026.
+- Tickets are aging badly — 8 of the 11 open ones have been sitting for six months, and the oldest, Brightline asking to add seats to its plan, has been open since June 13, 2025.
+- Two of the stalled tickets are customers trying to give us money: that Brightline add-seats request and Halvorsen Beverages' high-priority enterprise-tier upgrade from May 2026.
 
 Supporting Facts:
-- 20 tickets total: 11 open, 9 solved (55% open). By company: LVMH 1 of 4 open; Moet 2 of 4; Sephora 5 of 8; Tiffany 3 of 6
-- Oldest open ticket: Sephora "Add seats to the Sephora plan" #143, opened 2025-06-13, ~13 months (deep link to the ticket)
+- 20 tickets total: 11 open, 9 solved (55% open). By company: Halvorsen Group 1 of 4 open; Halvorsen Beverages 2 of 4; Brightline 5 of 8; Calder 3 of 6
+- Oldest open ticket: Brightline "Add seats to the Brightline plan" #143, opened 2025-06-13, ~13 months (deep link to the ticket)
 - No CSAT, sentiment, or SLA metrics in the dataset
 
 Comparative Lens: Active families average 2.5 tickets (674 tickets across the 267 families with any activity). This family has 20, and its oldest open ticket predates every one of its expansion deals.
