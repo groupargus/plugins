@@ -4,7 +4,7 @@
       "type": "http",
       "url": "https://api.sunnny.com/mcp",
       "oauth": {
-        "clientId": "mcp-client",
+        "clientId": "claude-code",
         "callbackPort": 3334
       }
     }
