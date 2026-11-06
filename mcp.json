@@ -1,0 +1,22 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "sunnny": {
+      "type": "streamable-http",
+      "url": "https://api.sunnny.com/mcp",
+      "extensions": {
+        "com.openai": {
+          "auth": {
+            "type": "oauth",
+            "client": {
+              "mode": "provided",
+              "clientId": "chatgpt",
+              "tokenEndpointAuthMethod": "client_secret_post"
+            },
+            "baseScopes": ["openid", "instance", "workspace:reports:read"]
+          }
+        }
+      }
+    }
+  }
+}

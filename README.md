@@ -20,6 +20,10 @@ If you set up Sunnny in Claude earlier with a custom connector and the `sunnny-c
 1. **Customize → Skills**: remove `sunnny-overview`.
 2. **Customize → Connectors**: remove your custom Sunnny connector.
 
+## Install in ChatGPT
+
+Find **Sunnny** in ChatGPT's plugin directory and add it. When ChatGPT asks you to connect, sign in with your Sunnny account.
+
 ## Use it
 
 You can ask for an overview of any customer organization with the `/overview` skill. For example: `/overview LVMH`.
