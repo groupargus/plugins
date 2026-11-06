@@ -1,0 +1,91 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "sunnny",
+  "version": "0.1.4",
+  "description": "Connect your AI assistant to your Sunnny CRM, support, and call data, and get an executive overview of any customer.",
+  "author": {
+    "name": "Sunnny team",
+    "email": "support@sunnny.com"
+  },
+  "homepage": "https://sunnny.com",
+  "repository": "https://github.com/groupargus/plugins",
+  "license": "UNLICENSED",
+  "keywords": ["sunnny", "crm", "customer-success", "mcp"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Sunnny",
+        "shortDescription": "Customer data and overviews",
+        "longDescription": "Sunnny unifies a company's customer data from CRM, support, and call systems such as Salesforce, HubSpot, Zendesk, Jira, Slack, and Gong. This plugin lets ChatGPT read that data. Ask about any customer, deal, contact, meeting, or support ticket, or ask for a full account overview covering value, engagement, support health, and product activity. ChatGPT can also walk you through connecting a new system to Sunnny. The plugin is read-only and can't create, change, or delete records.",
+        "developerName": "Sunnny",
+        "category": "Business & Operations",
+        "capabilities": ["Read"],
+        "websiteURL": "https://sunnny.com",
+        "supportURL": "https://github.com/groupargus/plugins#readme",
+        "privacyPolicyURL": "https://sunnny.com/privacy",
+        "termsOfServiceURL": "https://sunnny.com/terms",
+        "defaultPrompt": [
+          "Give me an overview of a customer",
+          "Which customers have the most open support tickets?",
+          "How do I connect Zendesk to Sunnny?"
+        ],
+        "composerIcon": "./assets/composer-icon.png",
+        "logo": "./assets/logo.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Customer overview report",
+              "prompt": "Give me an overview of LVMH",
+              "tools_triggered": "list_organizations, get_organization_summary, list_organization_records, get_summary",
+              "expected_behavior": "A five-theme report: overview, revenue, engagement, support, and product activity."
+            },
+            {
+              "description": "Open ticket count for one customer",
+              "prompt": "How many open support tickets does LVMH have?",
+              "tools_triggered": "list_organizations, list_organization_records",
+              "expected_behavior": "The count, with the most recent tickets."
+            },
+            {
+              "description": "Last meeting and attendees",
+              "prompt": "When was our last meeting with LVMH, and who attended?",
+              "tools_triggered": "list_organizations, list_organization_records",
+              "expected_behavior": "The meeting date and attendees from the call data."
+            },
+            {
+              "description": "Supported source systems",
+              "prompt": "Which systems can I connect to Sunnny?",
+              "tools_triggered": "list_connector_types",
+              "expected_behavior": "The list of supported systems."
+            },
+            {
+              "description": "Setup steps for one system",
+              "prompt": "How do I connect Zendesk to Sunnny?",
+              "tools_triggered": "list_connector_types, get_connector_requirements",
+              "expected_behavior": "Setup steps for Zendesk, one at a time."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Delete request. The plugin is read-only, so it should say it can't delete records and call no tools.",
+              "prompt": "Delete all support tickets for LVMH"
+            },
+            {
+              "description": "Email request. The plugin can't send email, so it should say so and call no tools.",
+              "prompt": "Email the main contact at LVMH"
+            },
+            {
+              "description": "General knowledge question. It should answer without calling Sunnny.",
+              "prompt": "What does QBR mean?"
+            }
+          ]
+        },
+        "demo_recording_url": "https://www.loom.com/share/f860a5e0c1ef4dc5bcb516749d9b6415"
+      },
+      "publication": {
+        "release_notes": "First release."
+      }
+    }
+  }
+}
