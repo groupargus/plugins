@@ -30,10 +30,13 @@ Every claim traces to a field in the dataset. Where the data is missing, the rep
    theme names: Overview / Revenue / Engagement / Support / Product Activity.
    Each carries its headline number, and the summary closes on The Read)
 ## Theme 1 … Theme 5, each with:
-  Key Insights / Supporting Facts / Comparative Lens / Data Sources
+  Key Insights / Comparative Lens
+## Supporting Facts and Sources
+  (one sub-heading per passing theme, in theme order, holding that
+   theme's Supporting Facts and its Data Sources)
 ```
 
-**The Read** closes the Short Summary and appears nowhere else — the report ends on Theme 5, not on a trailing verdict. It is judgment across all five themes: the theme lines report, The Read commits, naming the real risk even when it is not the obvious one. From a real report: "The Read: an average-sized account with above-average support friction, a go-live that may never have happened, and no executive above EVP. The $105,000 open deal is not the risk — the $407,500 already booked is, with no usage data to say whether they use what they bought."
+**The Read** closes the Short Summary and appears nowhere else — the report ends on Supporting Facts and Sources, not on a trailing verdict. It is judgment across all five themes: the theme lines report, The Read commits, naming the real risk even when it is not the obvious one. From a real report: "The Read: an average-sized account with above-average support friction, a go-live that may never have happened, and no executive above EVP. The $105,000 open deal is not the risk — the $407,500 already booked is, with no usage data to say whether they use what they bought."
 
 ## The five themes and their gates
 
@@ -43,8 +46,8 @@ Exactly these five, in this order. A theme passes its gate when enough of its li
 |---|---|---|---|
 | 1. Customer Overview | Quick overview of this customer | Account profile (industry, employees, revenue; segment if a source has it); company tree (conglomerate or independent); account type (customer, prospect, lead); plan or product, usually from a contracts, subscriptions, or licenses custom type; go-live status from a projects custom type | Recently new customer; prospect subsidiaries inside a large company tree; onboarding that never went live |
 | 2. Customer Value | What is this customer worth to me | Contract value and end dates, usually from a contracts or subscriptions custom type; opportunity pipeline with dollar value, stage, close dates; quotes, orders, and invoices custom types; total across parent and subsidiaries | Upcoming contract expirations; deal close dates; deals at risk from support ticket volume; downgrades or cancellations; overdue invoices |
-| 3. Customer Engagement Level | How strong and strategic is the relationship | Engagement volume (meetings, calls, conversations); NPS/CSAT or surveys, usually from a surveys custom type; campaign, webinar, event, or QBR custom types; contact count, seniority distribution (C-level through Director) from contact and meeting-participant titles, functional diversity from contact departments | Low or dropping engagement; who shows up in meetings, events, and deals; missing senior contacts; recurring conversation topics; overdue QBR actions |
-| 4. Customer Support | How is the support experience | Tickets with priority and status; CSAT/NPS or SLA metrics, including a survey about support cases; community engagement, usually from a community or forum custom type | Volume and trends; recurring ticket themes; high-priority or urgent tickets; bad sentiment; unanswered community questions |
+| 3. Customer Engagement Level | How strong and strategic is the relationship | Engagement volume (meetings, calls, conversations); NPS or relationship surveys, usually from a surveys custom type; campaign, webinar, event, or QBR custom types; contact count, seniority distribution (C-level through Director) from contact and meeting-participant titles, functional diversity from contact departments | Low or dropping engagement; who shows up in meetings, events, and deals; missing senior contacts; recurring conversation topics; overdue QBR actions |
+| 4. Customer Support | How is the support experience | Tickets with priority and status; CSAT or SLA metrics, often from a surveys custom type; community engagement, usually from a community or forum custom type | Volume and trends; recurring ticket themes; high-priority or urgent tickets; bad sentiment; unanswered community questions |
 | 5. Product Activity | Is the customer getting value | Product telemetry (DAU/WAU/MAU, logins, feature usage), usually from a product activities or licenses custom type, OR a usage proxy (API calls, exports) | Low or declining usage; power users; active users vs. licensed seats; usage against plan limits; unused features; most-requested features |
 
 Calibration from a real run: meetings plus contact depth passed the Engagement gate even with NPS absent (the absence was declared in the facts); support-ticket anecdotes alone failed the Product Activity gate.
@@ -64,7 +67,7 @@ Give each fact its full evidence in one theme, the one whose question it answers
 | Sales/Purchase Orders, Invoices | 2. Customer Value | Booked amount; overdue or unpaid invoices |
 | Projects (onboarding, implementation) | 1. Customer Overview; fees in 2. Customer Value | Go-live status; slipped milestones against the planned end |
 | Campaigns, Webinars & Events | 3. Customer Engagement Level | Reply and attendance rates; who engaged, by title; no-shows |
-| Surveys (NPS, CSAT, product feedback) | 3. Customer Engagement Level; a survey about support cases also in 4. Customer Support | Scores and their trend; detractor comments, quoted |
+| Surveys (NPS, CSAT, product feedback) | NPS and other surveys in 3. Customer Engagement Level; CSAT in 4. Customer Support | Scores and their trend; detractor comments, quoted |
 | Business reviews (QBRs) | 3. Customer Engagement Level | Date of the last review; customer goals; agreed actions now overdue |
 | Community/Forum activity | 4. Customer Support | Post volume and trend; unanswered questions; sentiment |
 | Feedback/Requests | 5. Product Activity | Most-requested product areas; vote counts |
@@ -74,17 +77,17 @@ A type that matches no row goes to the theme whose question its fields answer. W
 
 ### When a theme passes
 
-Write 3–5 Key Insights, each backed by Supporting Facts, and every insight carrying a date, name, dollar value, or quoted comment. Name a person alongside their company and, where the record has one, their job title, and never include an email address or phone number. Add a Comparative Lens where data permits: a historical trend, peer benchmark, or portfolio average.
+Write 3–5 Key Insights, each backed by Supporting Facts, and every insight carrying a date, name, dollar value, or quoted comment. Name a person alongside their company and, where the record has one, their job title, and never include an email address or phone number. Add a Comparative Lens where data permits: a historical trend, peer benchmark, or portfolio average. The theme itself holds only Key Insights and the Comparative Lens. Its Supporting Facts and Data Sources go under its sub-heading in Supporting Facts and Sources at the end of the report.
 
 Inside a passing theme, name the standard inputs that are absent ("no contract end dates in the dataset, so churn can't be measured") rather than silently skipping them.
 
 ### When a theme fails
 
-Set Key Insights to exactly `Insufficient Data`. In Supporting Facts, bullet the missing inputs and the nearest available signal, if any. Leave the Comparative Lens empty and record Data Sources as none available. A theme is fully written or explicitly empty, never half-filled.
+Set Key Insights to exactly `Insufficient Data`, followed by one line naming the missing inputs and the nearest available signal, if any. Leave the Comparative Lens empty, and leave the theme out of Supporting Facts and Sources. A theme is fully written or explicitly empty, never half-filled.
 
 ## Two voices
 
-Key Insights are full, natural sentences you would say aloud in a briefing — the strategic read. Supporting Facts are short, data-dense bullets — the evidence trail, with record IDs, source fields, and deep links to records where available.
+Key Insights are full, natural sentences you would say aloud in a briefing — the strategic read. Supporting Facts are short, data-dense bullets — the evidence trail, with record IDs, source fields, and deep links to records where available, gathered at the end of the report so the themes read cleanly.
 
 ### Exemplar (Customer Support, made-up family)
 
@@ -95,12 +98,14 @@ Key Insights:
 - Tickets are aging badly — 8 of the 11 open ones have been sitting for six months, and the oldest, Brightline asking to add seats to its plan, has been open since June 13, 2025.
 - Two of the stalled tickets are customers trying to give us money: that Brightline add-seats request and Halvorsen Beverages' high-priority enterprise-tier upgrade from May 2026.
 
+Comparative Lens: Active families average 2.5 tickets (674 tickets across the 267 families with any activity). This family has 20, and its oldest open ticket predates every one of its expansion deals.
+
+Later, under the Customer Support sub-heading of Supporting Facts and Sources:
+
 Supporting Facts:
 - 20 tickets total: 11 open, 9 solved (55% open). By company: Halvorsen Group 1 of 4 open; Halvorsen Beverages 2 of 4; Brightline 5 of 8; Calder 3 of 6
 - Oldest open ticket: Brightline "Add seats to the Brightline plan" #143, opened 2025-06-13, ~13 months (deep link to the ticket)
 - No CSAT, sentiment, or SLA metrics in the dataset
-
-Comparative Lens: Active families average 2.5 tickets (674 tickets across the 267 families with any activity). This family has 20, and its oldest open ticket predates every one of its expansion deals.
 
 Data Sources: Zendesk Tickets
 
@@ -130,8 +135,9 @@ Voice:
 
 ## Pre-flight checklist
 
-- [ ] Short Summary closing on The Read, then exactly five themes in the fixed order and with the full theme names, and nothing after Theme 5.
-- [ ] Every Key Insights section is either 3–5 full sentences or exactly `Insufficient Data`, never a mix.
+- [ ] Short Summary closing on The Read, then exactly five themes in the fixed order and with the full theme names, then Supporting Facts and Sources grouped by theme, and nothing after it.
+- [ ] Every theme holds only Key Insights and a Comparative Lens, with its Supporting Facts and Data Sources in the closing section.
+- [ ] Every Key Insights section is either 3–5 full sentences or exactly `Insufficient Data` with its missing-inputs line, never a mix.
 - [ ] The prose contains zero underscores, field codes, or raw system enums.
 - [ ] Every number and claim traces to a Supporting Fact drawn from the dataset.
 - [ ] Every custom type found in the family appears in a theme's Data Sources or in Customer Overview as not analyzed.
