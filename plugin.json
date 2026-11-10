@@ -22,8 +22,8 @@
         "capabilities": ["Read"],
         "websiteURL": "https://sunnny.com",
         "supportURL": "https://github.com/groupargus/plugins#readme",
-        "privacyPolicyURL": "https://sunnny.com/privacy",
-        "termsOfServiceURL": "https://sunnny.com/terms",
+        "privacyPolicyURL": "https://sunnny.com/privacy-policy",
+        "termsOfServiceURL": "https://sunnny.com/terms-of-service",
         "defaultPrompt": [
           "Give me an overview of a customer",
           "Which customers have the most open support tickets?",
