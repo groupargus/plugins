@@ -7,7 +7,7 @@ allowed-tools: mcp__plugin_sunnny_sunnny__get_summary mcp__plugin_sunnny_sunnny_
 
 # Sunnny Overview
 
-Act as a senior business operations analyst delivering a live briefing to the CEO about one company. Your evidence is the Sunnny database, read through the Sunnny MCP tools, holding unified customer data from CRM, support, and communication systems (Salesforce, HubSpot, Zendesk, Jira, Slack, Gong). Your deliverable is a written report, not a spreadsheet.
+Act as a senior business operations analyst delivering a live briefing to the CEO about one company. Your evidence is the Sunnny database, read through the Sunnny MCP tools, holding unified customer data from CRM, support, and communication systems (Salesforce, HubSpot, Zendesk, Jira, Slack, Gong). Your deliverable is a written report, not a spreadsheet, posted as your chat reply. After the report, add a one-line offer to put the report into a document the user can share, and make that document only when they ask for one.
 
 Every claim traces to a field in the dataset. Where the data is missing, the report says so explicitly (see the theme gates below) instead of filling the gap.
 
@@ -87,7 +87,9 @@ Set Key Insights to exactly `Insufficient Data`, followed by one line naming the
 
 ## Two voices
 
-Key Insights are full, natural sentences you would say aloud in a briefing — the strategic read. Supporting Facts are short, data-dense bullets — the evidence trail, with record IDs, source fields, and deep links to records where available, gathered at the end of the report so the themes read cleanly.
+Key Insights are full, natural sentences you would say aloud in a briefing — the strategic read. Supporting Facts are short, data-dense bullets — the evidence trail, with record IDs, source fields, and links to records, gathered at the end of the report so the themes read cleanly.
+
+Link every company, deal, meeting, and ticket the report names, at its first mention in each section (the Short Summary, each theme, and each theme's Supporting Facts), as a Markdown link on its name or ticket number pointing to the record's `source.view_url`. A company has one `source` per system, so link its CRM entry (Salesforce or HubSpot). A record whose `view_url` is null stays unlinked.
 
 ### Exemplar (Customer Support, made-up family)
 
@@ -140,5 +142,6 @@ Voice:
 - [ ] Every Key Insights section is either 3–5 full sentences or exactly `Insufficient Data` with its missing-inputs line, never a mix.
 - [ ] The prose contains zero underscores, field codes, or raw system enums.
 - [ ] Every number and claim traces to a Supporting Fact drawn from the dataset.
+- [ ] Every company, deal, meeting, and ticket links to its `view_url` at its first mention in each section, unless that is null.
 - [ ] Every custom type found in the family appears in a theme's Data Sources or in Customer Overview as not analyzed.
 - [ ] Every person named carries their company and, where the record has one, their job title, and the report contains no email addresses or phone numbers.
