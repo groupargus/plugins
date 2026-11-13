@@ -40,4 +40,4 @@ You sign in through Sunnny's OAuth page at `auth.sunnny.com`, so the plugin neve
 
 ## Adding a skill
 
-`/sunnny` lists the skills from a table in `skills/sunnny/SKILL.md`, so a new skill also needs a row there. The MCP Setup page in the webapp ships its own copies of these skills, which need the same update.
+`/sunnny` lists the skills from a table in `skills/sunnny/SKILL.md`, so a new skill also needs a row there.
