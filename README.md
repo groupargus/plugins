@@ -26,6 +26,8 @@ Find **Sunnny** in ChatGPT's plugin directory and add it. When ChatGPT asks you 
 
 ## Use it
 
+Type `/sunnny` to check that Sunnny is connected and see the skills you can run.
+
 You can ask for an overview of any customer organization with the `/overview` skill. For example: `/overview LVMH`.
 
 You can also ask questions about your data, such as "What is the most recently closed deal?". If the data isn't in your account, the assistant says so.
@@ -35,3 +37,7 @@ You can also ask questions about your data, such as "What is the most recently c
 The plugin connects to Sunnny's MCP server at `https://api.sunnny.com/mcp`. To answer a question, the assistant sends read-only queries to that server and gets back records from your Sunnny account, such as companies, contacts, deals, meetings, calls, and support tickets. The plugin can't create, change, or delete records.
 
 You sign in through Sunnny's OAuth page at `auth.sunnny.com`, so the plugin never sees your password. The plugin stores no data itself and sends data to no other service.
+
+## Adding a skill
+
+`/sunnny` lists the skills from a table in `skills/sunnny/SKILL.md`, so a new skill also needs a row there. The MCP Setup page in the webapp ships its own copies of these skills, which need the same update.
