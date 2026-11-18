@@ -1,6 +1,6 @@
 # Sunnny plugins
 
-Connects your AI assistant to your Sunnny data (CRM, support, and call records) and adds a skill that writes an executive overview of any customer.
+Connects your AI assistant to your Sunnny data (CRM, support, and call records) and adds skills that write an executive overview of any customer and point at the customers worth a look.
 
 The plugin is in beta. Sign-in only works for Sunnny accounts enabled for the beta. To get access, reach out to your contact at Sunnny.
 
@@ -15,9 +15,9 @@ If Sunnny doesn't appear on the **Discover** tab, add its marketplace first. Cho
 
 ### Upgrading from the manual setup
 
-If you set up Sunnny in Claude earlier with a custom connector and the `sunnny-claude-skill-upload.zip` skill, remove both after installing the plugin. Otherwise Claude shows the skill and the connector twice.
+If you set up Sunnny in Claude earlier with a custom connector and uploaded skills, remove them after installing the plugin. The plugin brings its own copies, so otherwise Claude shows each skill and the connector twice.
 
-1. **Customize → Skills**: remove `sunnny-overview`.
+1. **Customize → Skills**: remove each Sunnny skill you uploaded: `sunnny-overview` (the old name of the overview skill), `overview`, `insights`, and `sunnny`.
 2. **Customize → Connectors**: remove your custom Sunnny connector.
 
 ## Install in ChatGPT
@@ -29,6 +29,8 @@ Find **Sunnny** in ChatGPT's plugin directory and add it. When ChatGPT asks you 
 Type `/sunnny` to check that Sunnny is connected and see the skills you can run.
 
 You can ask for an overview of any customer organization with the `/overview` skill. For example: `/overview LVMH`.
+
+Type `/insights` to scan every active company for the few worth a look, each with the records behind it.
 
 You can also ask questions about your data, such as "What is the most recently closed deal?". If the data isn't in your account, the assistant says so.
 
