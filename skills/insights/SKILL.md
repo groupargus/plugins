@@ -12,7 +12,7 @@ In ChatGPT, `/insights` and `/overview` are the words `Insights` and `Overview`.
 
 1. **Text after the command.** None: run. A company name such as Adobe: reply only "For one company, run `/overview Adobe`. `/insights` on its own scans the whole portfolio." and call nothing. If unsure, it's other text. Other text: run, and after the opening sentence say `/insights` doesn't filter by Owner or date yet, so this covers the whole portfolio.
 2. **Connector.** Call tools by bare name. With several Sunnny MCP servers (not data sources), use the one named or ask which first, then use only that one.
-3. **Connection.** Call `get_summary`. If it fails, say to reconnect and sign in. If empty, offer to help connect a system. Then stop.
+3. **Connection.** Call `get_summary`. If it fails, say to reconnect. If empty, offer to help connect a system. Then stop.
 4. **Today** is the run's date. Every window counts from it.
 5. **Read.** Page `list_organizations` with `has_activity_since` today minus 12 months and `limit` 100. M is page 1's `filtered_count`. Per company: `get_organization_summary`, then nonzero `opportunities` and `tickets`. `meetings` only for a company in a multi-company Family with no opportunities or recent ticket. `custom-types` and a contract type's records only for a Check 2 candidate with no opportunity. `amount` is in minor units. Read whole Families in list order from page 1, never skipping or picking any, with no call budget of your own, until you can't go on.
 6. **Rank** by each Check's lead rule, ties by name from A to Z. First leads, next 5 are similar. Keep the full list for "Ask me for the rest".
@@ -29,11 +29,11 @@ In ChatGPT, `/insights` and `/overview` are the words `Insights` and `Overview`.
 
 Compare stored values case-insensitively. Unresolved: status not meaning solved or closed. Highest priority: the top value that ticket's source stores, ranked urgent, high, normal or medium, low. Won: a stage meaning won, such as `Closed Won`. Open: a stage not starting with "Closed". Buy-more terms, in subject plus description: "add seats", "upgrad", "enterprise tier", "more licenses", "expand", or "additional" then seats, users or licenses. Contract record: a Custom record whose type describes a contract or subscription.
 
-Not run when `get_summary` lacks a Check's data: opportunities for 1, 3, 4 and 5, tickets for 1 and 4, tickets or meetings for 3 and 5. Name what to connect: a CRM for opportunities, support data such as Zendesk for tickets, a support or call system for tickets or meetings.
+Not run when `get_summary` lacks a Check's data: opportunities for 1, 3, 4 and 5, tickets for 1 and 4, tickets or meetings for 3 and 5. Name what to connect: a CRM for opportunities, support data such as Zendesk for tickets, a call system for meetings.
 
 ## Reply
 
-Write nothing until reading stops, then open with only "I ran all 5 checks over the M companies in Families active in the last 12 months on <connector>." (partial: "I read N of the M companies..."), plus step 1's sentence if any, and no other caveat. Then a `---` line, the five Checks, and nothing after.
+Write nothing until reading stops, then open with only "I ran all 5 checks over the M companies in Families active in the last 12 months on <connector>." (partial: "I read N of the M companies..."), plus step 1's sentence if any, and no other caveat. Then a `---` line, the five Checks, and nothing after. A partial read still reports all five Checks.
 
 Each Insight is a `### <n>. <Check>: <company>` heading, exactly three #, then bold-labeled Fact, Worth asking and Similar companies bullets, then `Explore deeper: /overview <company>`. A Check with no Insight gets `### <n>. <Check>`, no colon, and `- **Not run:** this check needs <data>. It would show <what>. Connect <system> to turn it on.` or `- **Found none:** I looked at <what> and found no <what>.`
 
