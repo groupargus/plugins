@@ -35,10 +35,10 @@ Not run when `get_summary` lacks a Check's data: opportunities for 1, 3, 4 and 5
 
 Open with only "I ran all 5 checks over the M companies in Families active in the last 12 months on <connector>." (partial: "I read N of the M companies..."), plus step 1's sentence if any, and no other caveat. Then a rule, the five Checks, and nothing after.
 
-Each Insight is a `### <n>. <Check>: <company>` heading, exactly three #, then bold-labeled Fact, Worth asking and Similar companies bullets, then `Explore deeper: /overview <company>`. A Check with no Insight gets a heading with no company and `- **Not run:** this check needs <data>. It would show <what>. Connect <system> to turn it on.` or `- **Found none:** I looked at <what> and found no <what>.`
+Each Insight is a `### <n>. <Check>: <company>` heading, exactly three #, then bold-labeled Fact, Worth asking and Similar companies bullets, then `Explore deeper: /overview <company>`. A Check with no Insight gets `### <n>. <Check>`, no colon, and `- **Not run:** this check needs <data>. It would show <what>. Connect <system> to turn it on.` or `- **Found none:** I looked at <what> and found no <what>.`
 
 - Add ` (<Family>)` after a company, in headings and Similar companies, only when its top-level company has another name.
-- Fact: served data only, each record dated and under its own company, status and priority as stored. No inference.
+- Fact: served data only, each record dated and under its own company, status, priority and stage as stored, never unresolved or won. No inference.
 - Worth asking: one or two questions, the only interpretation.
 - Similar companies: up to 5, each with the value it ranked on, such as days waited, then "Ask me for the rest." if more exist.
 - Link each company (its CRM entry), deal, meeting and ticket at first mention per Insight to `source.view_url`, placeholder hosts too. Null stays plain. No app.sunnny.com.
