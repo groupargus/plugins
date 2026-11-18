@@ -17,3 +17,4 @@ Show the user which Sunnny skills they can run here, once you know Sunnny answer
 | Skill | Run it with | What it gives you |
 |---|---|---|
 | Overview | `/overview [company name]` | An executive report on one company and its subsidiaries, covering overview, revenue, engagement, support, and product activity. |
+| Insights | `/insights` | A short list of things worth looking into across your customers, each with the records behind it and questions to dig further. |

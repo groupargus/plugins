@@ -1,8 +1,8 @@
 {
   "name": "sunnny",
   "displayName": "Sunnny",
-  "version": "0.1.5",
-  "description": "Connect Claude to your Sunnny CRM, support, and call data, and get an executive overview of any customer.",
+  "version": "0.1.6",
+  "description": "Connect Claude to your Sunnny CRM, support, and call data, get an executive overview of any customer, and see what's worth looking into across all of them.",
   "author": {
     "name": "Sunnny team",
     "email": "support@sunnny.com"

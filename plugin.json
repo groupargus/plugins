@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "sunnny",
-  "version": "0.1.5",
-  "description": "Connect your AI assistant to your Sunnny CRM, support, and call data, and get an executive overview of any customer.",
+  "version": "0.1.6",
+  "description": "Connect your AI assistant to your Sunnny CRM, support, and call data, get an executive overview of any customer, and see what's worth looking into across all of them.",
   "author": {
     "name": "Sunnny team",
     "email": "support@sunnny.com"
@@ -15,8 +15,8 @@
     "com.openai": {
       "interface": {
         "displayName": "Sunnny",
-        "shortDescription": "Customer data and overviews",
-        "longDescription": "Sunnny unifies a company's customer data from CRM, support, and call systems such as Salesforce, HubSpot, Zendesk, Jira, Slack, and Gong. This plugin lets ChatGPT read that data. Ask about any customer, deal, contact, meeting, or support ticket, or ask for a full account overview covering value, engagement, support health, and product activity. ChatGPT can also walk you through connecting a new system to Sunnny. The plugin is read-only and can't create, change, or delete records.",
+        "shortDescription": "Customer overviews, insights",
+        "longDescription": "Sunnny unifies a company's customer data from CRM, support, and call systems such as Salesforce, HubSpot, Zendesk, Jira, Slack, and Gong. This plugin lets ChatGPT read that data. Ask about any customer, deal, contact, meeting, or support ticket, or ask for a full account overview covering value, engagement, support health, and product activity. Or ask what's worth looking into across all your customers, such as a customer asking support to buy more with no deal open. ChatGPT can also walk you through connecting a new system to Sunnny. The plugin is read-only and can't create, change, or delete records.",
         "developerName": "Sunnny",
         "category": "Business & Operations",
         "capabilities": ["Read"],
@@ -26,7 +26,7 @@
         "termsOfServiceURL": "https://sunnny.com/terms-of-service",
         "defaultPrompt": [
           "Give me an overview of a customer",
-          "Which customers have the most open support tickets?",
+          "What should I look into across my customers?",
           "How do I connect Zendesk to Sunnny?"
         ],
         "composerIcon": "./assets/composer-icon.png",
@@ -84,7 +84,7 @@
         "demo_recording_url": "https://www.loom.com/share/f860a5e0c1ef4dc5bcb516749d9b6415"
       },
       "publication": {
-        "release_notes": "First release."
+        "release_notes": "Adds /insights, which runs five checks across all your customers, such as a deal closing soon at a company with open high-priority tickets, and shows what each one found with the records behind it. Also adds /sunnny, which checks that Sunnny is connected and lists the skills you can run."
       }
     }
   }
