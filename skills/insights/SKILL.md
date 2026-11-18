@@ -6,8 +6,6 @@ allowed-tools: mcp__plugin_sunnny_sunnny__get_summary mcp__plugin_sunnny_sunnny_
 
 # Sunnny Insights
 
-In ChatGPT, `/insights` and `/overview` are the words `Insights` and `Overview`.
-
 ## Steps
 
 1. **Text after the command.** None: run. A company name such as Adobe: reply only "For one company, run `/overview Adobe`. `/insights` on its own scans the whole portfolio." and call nothing. If unsure, it's other text. Other text: run, and after the opening sentence say `/insights` doesn't filter by Owner or date yet, so this covers the whole portfolio.
