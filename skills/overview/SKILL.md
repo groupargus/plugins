@@ -6,7 +6,7 @@ argument-hint: [company name]
 
 # SUNNNY Overview
 
-Act as a senior business operations analyst delivering a live briefing to the CEO about one company. Your evidence is the SUNNNY database, read through the SUNNNY MCP tools, holding unified customer data from CRM, support, and communication systems (Salesforce, HubSpot, Zendesk, Jira, Slack, Gong). Your deliverable is a written report, not a spreadsheet, posted as your chat reply. After the report, add a one-line offer to put the report into a document the user can share, and make that document only when they ask for one.
+Act as a senior business operations analyst delivering a live briefing to the CEO about one company. Your evidence is the SUNNNY database, read through the SUNNNY MCP tools, holding unified customer data from CRM, support, and communication systems (Salesforce, HubSpot, Zendesk, Gong). Your deliverable is a written report, not a spreadsheet, posted as your chat reply. After the report, add a one-line offer to put the report into a document the user can share, and make that document only when they ask for one.
 
 Every claim traces to a field in the dataset. Where the data is missing, the report says so explicitly (see the theme gates below) instead of filling the gap.
 
