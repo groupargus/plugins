@@ -1,0 +1,10 @@
+interface:
+  display_name: "Overview"
+  short_description: "Executive overview of one customer"
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "sunnny"
+      description: "SUNNNY CRM, support, and call data"
+      transport: "streamable_http"
+      url: "https://api.sunnny.com/mcp"
