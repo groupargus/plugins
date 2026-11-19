@@ -1,13 +1,14 @@
 {
   "name": "sunnny",
-  "displayName": "Sunnny",
+  "displayName": "SUNNNY",
   "version": "0.1.5",
-  "description": "Connect Claude to your Sunnny CRM, support, and call data, and get an executive overview of any customer.",
+  "description": "SUNNNY consolidates your customer data, cleans it, resolves identities, identifies relationships, and presents it neatly for you, your team, and your AI model.",
   "author": {
-    "name": "Sunnny team",
+    "name": "SUNNNY team",
     "email": "support@sunnny.com"
   },
   "homepage": "https://sunnny.com",
+  "privacyPolicyUrl": "https://sunnny.com/privacy-policy",
   "license": "UNLICENSED",
   "keywords": ["sunnny", "crm", "customer-success", "mcp"]
 }

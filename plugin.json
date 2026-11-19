@@ -2,9 +2,9 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "sunnny",
   "version": "0.1.5",
-  "description": "Connect your AI assistant to your Sunnny CRM, support, and call data, and get an executive overview of any customer.",
+  "description": "Connect your AI assistant to your SUNNNY CRM, support, and call data, and get an executive overview of any customer.",
   "author": {
-    "name": "Sunnny team",
+    "name": "SUNNNY team",
     "email": "support@sunnny.com"
   },
   "homepage": "https://sunnny.com",
@@ -14,10 +14,10 @@
   "extensions": {
     "com.openai": {
       "interface": {
-        "displayName": "Sunnny",
+        "displayName": "SUNNNY",
         "shortDescription": "Customer data and overviews",
-        "longDescription": "Sunnny unifies a company's customer data from CRM, support, and call systems such as Salesforce, HubSpot, Zendesk, Jira, Slack, and Gong. This plugin lets ChatGPT read that data. Ask about any customer, deal, contact, meeting, or support ticket, or ask for a full account overview covering value, engagement, support health, and product activity. ChatGPT can also walk you through connecting a new system to Sunnny. The plugin is read-only and can't create, change, or delete records.",
-        "developerName": "Sunnny",
+        "longDescription": "SUNNNY unifies a company's customer data from CRM, support, and call systems such as Salesforce, HubSpot, Zendesk, and Gong. This connector lets your agent read that data. Ask about any customer, deal, contact, meeting, or support ticket, or ask for a full account overview covering value, engagement, support health, and product activity. Your agent can also walk you through connecting a new system to SUNNNY. The connector is read-only and can't create, change, or delete records.",
+        "developerName": "SUNNNY",
         "category": "Business & Operations",
         "capabilities": ["Read"],
         "websiteURL": "https://sunnny.com",
@@ -27,7 +27,7 @@
         "defaultPrompt": [
           "Give me an overview of a customer",
           "Which customers have the most open support tickets?",
-          "How do I connect Zendesk to Sunnny?"
+          "How do I connect Zendesk to SUNNNY?"
         ],
         "composerIcon": "./assets/composer-icon.png",
         "logo": "./assets/logo.png"
@@ -55,13 +55,13 @@
             },
             {
               "description": "Supported source systems",
-              "prompt": "Which systems can I connect to Sunnny?",
+              "prompt": "Which systems can I connect to SUNNNY?",
               "tools_triggered": "list_connector_types",
               "expected_behavior": "The list of supported systems."
             },
             {
               "description": "Setup steps for one system",
-              "prompt": "How do I connect Zendesk to Sunnny?",
+              "prompt": "How do I connect Zendesk to SUNNNY?",
               "tools_triggered": "list_connector_types, get_connector_requirements",
               "expected_behavior": "Setup steps for Zendesk, one at a time."
             }
@@ -76,7 +76,7 @@
               "prompt": "Email the main contact at LVMH"
             },
             {
-              "description": "General knowledge question. It should answer without calling Sunnny.",
+              "description": "General knowledge question. It should answer without calling SUNNNY.",
               "prompt": "What does QBR mean?"
             }
           ]
